@@ -1,0 +1,67 @@
+﻿@model AssetManager.Models.Device
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Device</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PurchaseDate" class="control-label">Date of Purchase</label>
+                <input asp-for="PurchaseDate" class="form-control" />
+                <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceCrowns" class="control-label">Price (SEK)</label>
+                <input asp-for="PriceCrowns" class="form-control" />
+                <span asp-validation-for="PriceCrowns" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <select name="Type" id="Type">
+				<option value="Laptop">Laptop</option>
+				<option value="Smartphone">Smartphone</option>  
+				</select>  
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Office" class="control-label"></label>
+                <select name="Office" id="Office">
+				<option value="London">London</option>
+				<option value="Paris">Paris</option>
+				<option value="San Francisco">San Francisco</option>
+				<option value="Gothenburg">Gothenburg</option>
+            </select>
+                <span asp-validation-for="Office" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

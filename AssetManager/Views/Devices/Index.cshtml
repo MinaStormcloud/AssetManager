@@ -1,0 +1,105 @@
+﻿@model IEnumerable<AssetManager.Models.Device>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Device List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="navbar-left" style="margin-top:8px;">
+    @using (Html.BeginForm("Results", "Devices", FormMethod.Post))
+    {
+        <ul class="nav navbar-nav">
+            <li>
+                Search Option:
+                @Html.RadioButton("option", "ID", true) <text> ID </text>
+                @Html.RadioButton("option", "Brand") <text> Brand </text>
+                @Html.RadioButton("option", "Model") <text> Model </text>
+                @Html.RadioButton("option", "PurchaseDate") <text> Date of Purchase </text>
+                @Html.RadioButton("option", "Type") <text> Type </text>
+				@Html.RadioButton("option", "Office") <text> Office </text>
+                @Html.RadioButton("option", "PriceCrowns") <text> Price (SEK) </text>
+				@Html.RadioButton("option", "PriceDollars") <text> Price (USD) </text>
+                @Html.RadioButton("option", "PriceEuros") <text> Price (Euros) </text>
+				@Html.RadioButton("option", "PricePounds") <text> Price (GBP) </text>
+            </li>                       
+        </ul>
+         @Html.TextBox("search")
+        <input type="submit" name="submit" value="Search" / >
+    }
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                Date of Purchase
+            </th>
+            <th>
+                Price (SEK)
+            </th>
+            <th>
+                Price (Euros)
+            </th>
+            <th>
+                Price ($)
+            </th>
+            <th>
+                Price (£)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Office)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceCrowns)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceEuros)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceDollars)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PricePounds)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Office)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
